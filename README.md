@@ -1,4 +1,4 @@
-[LeetCode Stats](https://leetcode.card.workers.dev/danvgar?theme=default&font=source_code_pro&extension=null)
+![LeetCode Stats](https://leetcode.card.workers.dev/danvgar?theme=default&font=source_code_pro&extension=null)
 
 Repository of daily [LeetCode](https://www.leetcode.com/) challenges for [danvgar](https://leetcode.com/danvgar/)
         
