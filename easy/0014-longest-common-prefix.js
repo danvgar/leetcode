@@ -46,20 +46,71 @@
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
+    console.log(`\nInput: ${strs}`)
+    // if strs array only has one word in it, return that word
+    if (strs.length === 1 || strs[0] === "") return strs[0]
+
+    // we don't need to compare every word of an array, just the last two of a sorted array
+    // vanilla sort will sort the array by UTF-16 code units
     strs.sort()
+    console.log(`Sorted Input: ${strs}`)
 
-    if(strs.length === 1) return strs[0]
+    // the minimum effort we need to put in is the smallest word in the array
+    // arguable the below could be optimized to consider only the first and last element of our sorted array
+    let minlength = Math.min(...strs.map(word => word.length))
+    console.log(`minlength: ${minlength}`)
 
-    let minlength = strs[0].length
-    for (let i = 0; i < minlength - 1; i++) {
-        if (strs[0][i] !== strs[strs.length - 1][i]) {
-            return strs[0].slice(0,i)
+    // our starting prefix is an empty string -> if there is no common prefix, we are returning an empty string
+    let prefix = ""
+
+    for (let i = 0; i < minlength; i++) {
+        console.log(`\nCurrent Prefix Tested at Index ${i}: "${strs[0][i]}"`)
+        console.log(`Comparing ${strs[0][i]} with ${strs[strs.length - 1][i]}`)
+        // does first character of first word === first character of last word? 
+        if (strs[0][i] === strs[strs.length - 1][i]) {
+            console.log(`Characters at ${i} match.`)
+            // if yes, add it to the prefix. then we move on and test the next character
+            prefix += strs[0][i]
+            console.log(`New Prefix: ${prefix}`)
+        } else {
+            // if we ever hit a point where the characters do not match, we stop and we return the prefix
+            console.log(`Characters don't match.`)
+            console.log(`Final return: "${prefix}"`)
+            return prefix
         }
     }
-    return ""
-};
+    // if you get to the end of the loop and the shortest word is actually the entire prefix, return the prefix
+    return prefix
+}
 
-// almost there. need to revisit.
+// =============
+// Refactoring 1
+// =============
+
+/**
+ * @param {string[]} strs
+ * @return {string}
+ */
+var longestCommonPrefix = function (strs) {
+    if (strs.length === 1 || strs[0] === "") return strs[0]
+    strs.sort()
+    let minlength = Math.min(...strs.map(word => word.length))
+    let prefix = ""
+    for (let i = 0; i < minlength; i++) {
+        if (strs[0][i] === strs[strs.length - 1][i]) {
+            prefix += strs[0][i]
+        } else {
+            return prefix
+        }
+    }
+    return prefix
+}
+
+
+// =============
+// Tests
+// =============
+
 
 console.log(longestCommonPrefix(["flower", "flow", "flight"], `Expected: "fl"`))
 console.log(longestCommonPrefix(["dog", "racecar", "car"], `Expected: ""`))
