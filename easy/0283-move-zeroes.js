@@ -42,15 +42,28 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function (nums) {
-	console.log(`\nInput: ${nums}`)
-	for (let i = 0; i < nums.length; i++) {
-		console.log(`Current Index: ${i}`)
-		if (nums[i] === 0) {
-			nums.push(nums[i])
-			nums.splice(i, 1)
+	// create two pointers. pointer one starts at i, pointer two starts at i + 1
+	let p1 = 0
+	let p2 = 1
+	// p1 represents the current zero found. we only care about when p1 finds a zero.
+	// p2 represents the current non-zero found. we only care about when p2 finds a non-zero.
+	while (p2 < nums.length) {
+		// loop ends when p2 has successfully moved to the end of the array (aka it found no more non-zero integers
+		// p1 stays in place. p2 keeps increasing until it finds the next non-zero, then swap elements between p1 and p2.
+		if (nums[p1] !== 0) {
+			// condition 1: p1 found non-zero --> increase p1 and p2
+			p1++
+			p2++
+		} else if (nums[p2] === 0) {
+			// condition 2: p1 found a zero and p2 found a zero --> maintain p1 but increase p2
+			p2++
+		} else if (nums[p2] !== 0) {
+			// condition 3: p1 found a zero and p2 found a nonzero --> swap elements, then increase p1 and p2.
+			[nums[p1], nums[p2]] = [nums[p2], nums[p1]]
+			p1++
+			p2++
 		}
 	}
+	// return array
 	return nums
 };
-
-// revisit
