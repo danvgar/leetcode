@@ -1,5 +1,6 @@
 // https://www.codewars.com/kata/59e66e48fc3c499ec5000103/train/javascript
 // First Attempt - Oct 27, 2023
+// Second Attempt - Mar 28, 2024
 
 
 // =============
@@ -35,7 +36,7 @@
 
 
 // =============
-// Solution 1
+// Attempt 1, Solution 1
 // =============
 
 /**
@@ -66,7 +67,7 @@ console.log(twoSum([3, 2, 4], 6), "(Expected: [1,2])")
 console.log(twoSum([3, 3], 6), "(Expected: [0,1])")
 
 // =============
-// Solution 2
+// Attempt 1, Solution 2
 // =============
 
 /**
@@ -93,3 +94,51 @@ var twoSum = function (nums, target) {
 console.log(twoSum([2, 7, 11, 15], 9), "(Expected: [0,1])")
 console.log(twoSum([3, 2, 4], 6), "(Expected: [1,2])")
 console.log(twoSum([3, 3], 6), "(Expected: [0,1])")
+
+
+// =============
+// Attempt 2, Solution 1
+// =============
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
+// input is an integer array, and an integer target
+// output is an integer array, representing the indices of the two numbers that add to the target value. 
+// // every test case will have a solution
+// // every test case will have exactly one solution
+// // don't count the same element twice
+// // order does not matter 
+
+var twoSum = function (nums, target) {
+    // nums[i] + nums[j] = target 
+    // nums[j] = target - nums[i]
+    // Option 1 - Brute Force. Compare every element to every element after it. 
+    // Option 2 - Two-Pass Hash Map. Add every element to a hash map, then check each value against it. 
+    // Option 3 - One-Pass Hash Map. Add every element as you go.
+
+    // Create hashmap object. 
+    let map = new Map();
+    // loop through array
+    for (let i = 0; i < nums.length; i++) {
+        // if target - nums[i] exists in hashmap, return indices of element and num[i]
+        let goal = target - nums[i]
+        if (map.has(goal)) {
+            return [map.get(goal), i]
+        }
+
+        // else, add current element to hash map and continue loop
+        else {
+            // Store values as check:return, so val:index
+            map.set(nums[i], i)
+        }
+    }
+}
+
+console.log(twoSum([2, 7, 11, 15], 9), `Expecting: [0, 1]`)
+console.log(twoSum([3, 2, 4], 6), `Expecting: [1, 2]`)
+console.log(twoSum([3, 3], 6), `Expecting: [0, 1]`)
+
