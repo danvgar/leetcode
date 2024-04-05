@@ -51,7 +51,7 @@
 // PREP
 // =============
 
-// input will be a string, representing an roman numerals from I, V, X, L, C, D, M. input will always be a valid roman numeral. no other edge cases such as empty string, null, undefined, other funnybusiness. 
+// input will be a string, representing an roman numerals from I, V, X, L, C, D, M. input will always be a valid roman numeral. no other edge cases such as empty string, null, undefined, other funny business. 
 // output will be that string converted into an integer. 
 
 // ordered from largest to smallest value. If smaller value appears before larger value, it is larger value minus smaller value. 
