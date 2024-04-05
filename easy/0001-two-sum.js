@@ -1,6 +1,7 @@
-// https://www.codewars.com/kata/59e66e48fc3c499ec5000103/train/javascript
+// https://leetcode.com/problems/two-sum/
 // First Attempt - Oct 27, 2023
 // Second Attempt - Mar 28, 2024
+// Third Attempt - Apr 5, 2024
 
 
 // =============
@@ -142,3 +143,26 @@ console.log(twoSum([2, 7, 11, 15], 9), `Expecting: [0, 1]`)
 console.log(twoSum([3, 2, 4], 6), `Expecting: [1, 2]`)
 console.log(twoSum([3, 3], 6), `Expecting: [0, 1]`)
 
+
+// =============
+// Attempt 3, Solution 1
+// =============
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+
+
+var twoSum = function (nums, target) {
+    const map = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        let currentTarget = target - nums[i];
+        if (map.has(currentTarget)) { // Do you have a number that sums with the current element to get the target?
+            return [map.get(currentTarget), i] // Get the index of that number and the current index
+        } else {
+            map.set(nums[i], i); // Set the current number as the key and the index as the value.
+        }
+    }
