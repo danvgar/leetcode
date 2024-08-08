@@ -65,19 +65,19 @@ var maxProfit = function (prices) {
   let minPrice = prices[0];
 
   // Skip first index as this is already minPrice.
-  for (price in prices) {
+  for (let price of prices) {
     // [7, 1, 5, 3, 6, 4]
-    if (let price < minPrice) {
+    if (price < minPrice) {
       minPrice = price;
     } else if (price - minPrice > maxProfit) {
       maxProfit = price - minPrice;
     }
   }
-console.log(`Output: maxprofit ${maxProfit}`)
+  console.log(`Output: maxprofit ${maxProfit}`);
   return maxProfit;
 };
 
 // Examples:
 console.log(maxProfit([7, 1, 5, 3, 6, 4]), `Expected: 5`); // buy on 1, sell on 6 -> 6 - 1 = 5
-console.log(maxProfit([7, 6, 4, 3, 1]), 'Expected: 0'); // no profit, return 0
-console.log(maxProfit([1, 1, 1, 1, 1]), 'Expected: 0'); // no profit, return 0
+console.log(maxProfit([7, 6, 4, 3, 1]), "Expected: 0"); // no profit, return 0
+console.log(maxProfit([1, 1, 1, 1, 1]), "Expected: 0"); // no profit, return 0
