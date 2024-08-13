@@ -26,6 +26,7 @@
 // Follow up:
 // Squaring each element and sorting the new array is very trivial, could you find an O(n) solution using a different approach?
 
+
 // =============
 // Solution 1
 // =============
@@ -99,6 +100,7 @@ var sortedSquares = function (nums) {
   return sorted;
 };
 
+
 // =============
 // Solution 2
 // =============
@@ -155,6 +157,7 @@ var sortedSquares = function (nums) {
   return sorted.reverse();
 
 };
+
 
 // =============
 // Tests
