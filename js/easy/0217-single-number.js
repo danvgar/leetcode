@@ -37,28 +37,6 @@
 // Solution 1
 // =============
 
-/**
- * @param {number[]} nums
- * @return {boolean}
- */
-var containsDuplicate = function (nums) {
-	// option 1: checking for duplicates: does first index = last index for each element? (time complex of O(n))
-	// time complexity of n
-	// return true if at least one element's first index doesn't equal it's last index
-	// return nums.some(element => nums.indexOf(element) !== nums.lastIndexOf(element))
-	// breaks with incredibly large array due to time complexity
-
-	// option 2: set size vs array length? (time complex of ???)
-	return new Set(nums).size !== nums.length
-};
-
-
-console.log(containsDuplicate([1, 2, 3, 1], `Expected: true`))
-console.log(containsDuplicate([1, 2, 3], `Expected: false`))
-console.log(containsDuplicate([1], `Expected: false`))
-console.log(containsDuplicate([-1, 1], `Expected: false`))
-console.log(containsDuplicate([1, 1], `Expected: true`))
-console.log(containsDuplicate([1, 1, 1], `Expected: true`))
 
 
 
