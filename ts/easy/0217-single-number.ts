@@ -1,6 +1,5 @@
 // https://leetcode.com/problems/single-number/
-// First Attempt - Oct 27, 2023
-
+// First Attempt - Oct 27, 2024
 
 // =============
 // Problem
@@ -46,7 +45,7 @@ function singleNumber(nums: number[]): number {
 	// iterate through array, and set counter for each element 
 	// look up element in map with count of 1
 
-	if(nums.length < 2) return nums[0]
+	if (nums.length < 2) return nums[0]
 
 	const map = {};
 
@@ -59,7 +58,7 @@ function singleNumber(nums: number[]): number {
 		}
 	}
 
-	for(const num of nums) {
+	for (const num of nums) {
 		if (map[num] === 1) return num
 	}
 };
